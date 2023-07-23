@@ -15,8 +15,13 @@ class CalculatorController:
             elif operation == 'history':
                 self.view.display_history(self.model.get_history())
             else:
-                var1 = float(input("Enter first number: "))
-                var2 = float(input("Enter second number: "))
+                try:
+                    var1 = float(input("Enter first number: "))
+                    var2 = float(input("Enter second number: "))
+                except ValueError:
+                    print("Invalid number entered!")
+                    continue
+
                 if operation == '+':
                     result = self.model.add(var1, var2)
                 elif operation == '-':
